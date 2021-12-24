@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "es6": "nodemon --exec babel-node ./src/es6.js"
+    "es2020": "nodemon --exec babel-node ./src/JavaScript/es6/es2020.js",
+    "es6": "nodemon --exec babel-node ./src/JavaScript/es6/es6.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",
@@ -12,5 +13,9 @@
     "@babel/node": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
     "nodemon": "^2.0.15"
-  }
+  },
+  "dependencies": {
+    "node-fetch": "^3.1.0"
+  },
+  "type": "module"
 }

@@ -1,0 +1,2 @@
+// Generator
+console.log("Generator");
