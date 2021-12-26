@@ -25,3 +25,19 @@ const symbol = Object.getOwnPropertySymbols(superBig);
 console.log(symbol);
 
 // Set
+const array = [1, 2, 3, 4, 5, 6];
+const set = new Set([...array]);
+
+console.log(set.has(10)); // false
+console.log(set.delete(1));
+console.log(set.add(1));
+console.log(set.toJSON);
+console.log(set.size);
+set.forEach((el) => console.log(el));
+
+// weak sets
+const weakSet = new WeakSet();
+
+console.log(weakSet.add({ name: "raven" }));
+// Garbage Collection
+console.log(weakSet.has("name"));
