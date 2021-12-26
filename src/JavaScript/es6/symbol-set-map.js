@@ -41,3 +41,20 @@ const weakSet = new WeakSet();
 console.log(weakSet.add({ name: "raven" }));
 // Garbage Collection
 console.log(weakSet.has("name"));
+
+// Map
+// map은 set과 비슷한데 key : value 형태
+
+const map = new Map();
+map.set("name", "raven");
+console.log(map);
+console.log(map.entries());
+console.log(map.has("name"));
+console.log(map.get("age"));
+
+// WeakMap
+const weakMap = new WeakMap();
+
+console.log(weakMap);
+console.log(weakMap.set({ name: "raven" }));
+weakMap.get("name");
