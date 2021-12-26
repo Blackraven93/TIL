@@ -1,15 +1,27 @@
 # JavaScript ES6 syntax
 
-## Nullish coalescing operator (??)
+## ES 2020
 
-## optional chaining(?.)
+### Nullish coalescing operator (??)
 
-## String.prototype.padStart()
+### optional chaining(?.)
 
-## String.prototype.trim()
+### String.prototype.padStart()
 
-## Object entries, Object values, Object fromEntries
+### String.prototype.trim()
 
-## Array.prototype.flat()
+### Object entries, Object values, Object fromEntries
 
-## Array.prototype.sort()
+### Array.prototype.flat()
+
+### Array.prototype.sort()
+
+## Proxy & Generator
+
+## Symbol, Set & Map
+
+### Symbol
+
+### Set
+
+### Map
