@@ -26,6 +26,10 @@ performancesMake("hamlet", 55);
 performancesMake("as-like", 35);
 performancesMake("othello", 40);
 
+function playFor(aPerformance) {
+  return plays[aPerformance.playID];
+}
+
 function amountFor(aPerformance, play) {
   // 값이 바뀌지 않는 변수는 매개변수로 전달
   let result = 0; // 변수를 초기화하는 코드
@@ -60,16 +64,16 @@ function statement(invoice, plays) {
   }).format;
 
   for (const perf of invoice[0].performances) {
-    const play = plays[perf.playID];
-    let thisAmount = amountFor(perf, play);
+    let thisAmount = amountFor(perf, playFor(perf));
 
     // 포인트 적립
     volumeCredits += Math.max(perf.audience - 30, 0);
     // 희극 관객 5명마다 추가 포인트를 제공.
-    if ("comedy" === play.type) volumeCredits += Math.floor(perf.audience / 5);
+    if ("comedy" === playFor(perf).type)
+      volumeCredits += Math.floor(perf.audience / 5);
 
     // 청구 내역을 출력
-    result += `    ${play.name}: ${format(thisAmount / 100)} (${
+    result += `    ${playFor(perf).name}: ${format(thisAmount / 100)} (${
       perf.audience
     }석)\n`;
     totalAmount += thisAmount;
