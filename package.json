@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "es2020": "nodemon --exec babel-node ./src/JavaScript/es6/es2020.js",
-    "symbol": "nodemon --exec babel-node ./src/JavaScript/es6/symbol-set-map.js"
+    "symbol": "nodemon --exec babel-node ./src/JavaScript/es6/symbol-set-map.js",
+    "refactoring": "nodemon --exec babel-node ./src/JavaScript/refactoring/Chapter1.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",
