@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="counter-display"></div>
+    <button class="plus"></button>
+    <button class="minus"></button>
+    <script>
+            let bird = {
+                name: "raven",
+                makeName: function() {return this.name}
+            }
+
+            var app = app || {}
+            
+           app.person = function (god) {
+            var name = god.makeName()
+
+            return {
+                getName: function() {return name},
+                setName: function(newName) {name = newName}
+            }
+        }
+
+        const person = app.person(bird)
+        console.log(person.getName())
+    </script>
+</body>
+</html>
