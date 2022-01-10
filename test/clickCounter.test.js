@@ -15,11 +15,12 @@ describe("App.ClickCounter", () => {
 
   describe("increase()", () => {
     it("카운터를 1 올린다", () => {
+      const inialValue = counter.getValue();
       // 실행
       counter.increase();
 
       // 단언
-      expect(counter.getValue()).toBe(1);
+      expect(counter.getValue()).toBe(inialValue + 1);
     });
   });
 });
