@@ -26,6 +26,13 @@ performancesMake("hamlet", 55);
 performancesMake("as-like", 35);
 performancesMake("othello", 40);
 
+function format(aNumber) {
+  return new Intl.NumberFormat("ko-KR", {
+    style: "currency",
+    currency: "KRW",
+  }).format(aNumber);
+}
+
 function volumeCreditsFor(aPerformance) {
   let result = 0;
   result += Math.max(aPerformance.audience - 30, 0);
@@ -66,10 +73,6 @@ function statement(invoice, plays) {
   let totalAmount = 0;
   let volumeCredits = 0;
   let result = `청구 내열 (고객명: ${invoice[0].customer})\n`;
-  const format = new Intl.NumberFormat("ko-KR", {
-    style: "currency",
-    currency: "KRW",
-  }).format;
 
   for (const perf of invoice[0].performances) {
     volumeCredits += volumeCreditsFor(perf);
