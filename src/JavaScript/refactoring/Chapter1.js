@@ -26,6 +26,14 @@ performancesMake("hamlet", 55);
 performancesMake("as-like", 35);
 performancesMake("othello", 40);
 
+function totalVolumeCredits() {
+  let volumeCredits = 0;
+  for (const perf of invoices[0].performances) {
+    volumeCredits += volumeCreditsFor(perf);
+  }
+  return volumeCredits;
+}
+
 function krw(aNumber) {
   return new Intl.NumberFormat("ko-KR", {
     style: "currency",
@@ -71,7 +79,7 @@ function amountFor(aPerformance) {
 
 function statement(invoice, plays) {
   let totalAmount = 0;
-  let volumeCredits = 0;
+
   let result = `청구 내열 (고객명: ${invoice[0].customer})\n`;
 
   for (const perf of invoice[0].performances) {
@@ -82,11 +90,8 @@ function statement(invoice, plays) {
     totalAmount += amountFor(perf);
   }
 
-  for (const perf of invoice[0].performances) {
-    volumeCredits += volumeCreditsFor(perf);
-  }
   result += `총액: ${krw(totalAmount)}\n`;
-  result += `적립 포인트: ${volumeCredits}점\n`;
+  result += `적립 포인트: ${totalVolumeCredits()}점\n`;
   return result.trim();
 }
 
