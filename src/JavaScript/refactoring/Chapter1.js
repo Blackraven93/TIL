@@ -26,12 +26,22 @@ performancesMake("hamlet", 55);
 performancesMake("as-like", 35);
 performancesMake("othello", 40);
 
-function totalVolumeCredits() {
-  let volumeCredits = 0;
+function totalAmount() {
+  let result = 0;
   for (const perf of invoices[0].performances) {
-    volumeCredits += volumeCreditsFor(perf);
+    // 청구 내역을 출력
+    result += amountFor(perf);
   }
-  return volumeCredits;
+
+  return result;
+}
+
+function totalVolumeCredits() {
+  let result = 0;
+  for (const perf of invoices[0].performances) {
+    result += volumeCreditsFor(perf);
+  }
+  return result;
 }
 
 function krw(aNumber) {
@@ -78,8 +88,6 @@ function amountFor(aPerformance) {
 }
 
 function statement(invoice, plays) {
-  let totalAmount = 0;
-
   let result = `청구 내열 (고객명: ${invoice[0].customer})\n`;
 
   for (const perf of invoice[0].performances) {
@@ -87,10 +95,9 @@ function statement(invoice, plays) {
     result += `    ${playFor(perf).name}: ${krw(amountFor(perf))} (${
       perf.audience
     }석)\n`;
-    totalAmount += amountFor(perf);
   }
 
-  result += `총액: ${krw(totalAmount)}\n`;
+  result += `총액: ${krw(totalAmount())}\n`;
   result += `적립 포인트: ${totalVolumeCredits()}점\n`;
   return result.trim();
 }
