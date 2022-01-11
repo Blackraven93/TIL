@@ -75,8 +75,6 @@ function statement(invoice, plays) {
   let result = `청구 내열 (고객명: ${invoice[0].customer})\n`;
 
   for (const perf of invoice[0].performances) {
-    volumeCredits += volumeCreditsFor(perf);
-
     // 청구 내역을 출력
     result += `    ${playFor(perf).name}: ${krw(amountFor(perf))} (${
       perf.audience
@@ -84,6 +82,9 @@ function statement(invoice, plays) {
     totalAmount += amountFor(perf);
   }
 
+  for (const perf of invoice[0].performances) {
+    volumeCredits += volumeCreditsFor(perf);
+  }
   result += `총액: ${krw(totalAmount)}\n`;
   result += `적립 포인트: ${volumeCredits}점\n`;
   return result.trim();
