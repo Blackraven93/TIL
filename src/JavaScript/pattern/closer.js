@@ -1,22 +1,24 @@
-const closer = (function () {
-  /**
-   * 구현체
-   */
+// const closer = (function () {
+//   /**
+//    * 구현체
+//    */
 
-  // 은닉될 멤버
-  let privateKey = 0;
-  function privateMethod() {
-    return ++privateKey;
-  }
+//   // 은닉될 멤버
+//   let privateKey = 0;
+//   function privateMethod() {
+//     return ++privateKey;
+//   }
 
-  // 공개될 멤버 정의
-  return {
-    publicKey: privateKey,
-    publicMehod: function () {
-      return privateMethod();
-    },
-  };
-})();
+//   // 공개될 멤버 정의
+//   return {
+//     publicKey: privateKey,
+//     publicMehod: function () {
+//       return privateMethod();
+//     },
+//   };
+// })();
+
+// // console.log(closer.publicMehod());
 
 // console.log(closer.publicKey);
 // console.log(closer.publicMehod());
@@ -26,15 +28,15 @@ const closer = (function () {
 
 // closer의 경우
 
-function func() {
-  let privateNum = 0;
-  return function () {
-    privateNum++;
-    return privateNum;
-  };
-}
+// function func() {
+//   let privateNum = 0;
+//   return function () {
+//     privateNum++;
+//     return privateNum;
+//   };
+// }
 
-const val = func();
-console.log(val());
-console.log(val());
-console.log(val());
+// const val = func();
+// console.log(val());
+// console.log(val());
+// console.log(val());

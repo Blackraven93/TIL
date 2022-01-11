@@ -47,3 +47,22 @@ console.log(obj2.publicMethod()); // 2
 
 console.log(obj1 === obj2);
 console.log(obj1);
+
+// 네임 스페이스 패턴을 함께 사용하면 더욱 좋음
+var app = app || {}; // 이부분?
+app.module = (function () {
+  var privateKey = 0;
+  function privateMethod() {
+    return privateKey++;
+  }
+
+  return {
+    publicKey: privateKey,
+    publicMethod: function () {
+      return privateMethod();
+    },
+  };
+})();
+
+console.log(app.module.publicMethod()); // 0
+console.log(app.module.publicMethod()); // 1

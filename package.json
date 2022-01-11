@@ -7,7 +7,7 @@
     "es2020": "nodemon --exec babel-node ./src/JavaScript/es6/es2020.js",
     "symbol": "nodemon --exec babel-node ./src/JavaScript/es6/symbol-set-map.js",
     "refactoring": "nodemon --exec babel-node ./src/JavaScript/refactoring/Chapter1.js",
-    "module": "nodemon --exec babel-node ./src/JavaScript/pattern/module.js",
+    "module": "nodemon --exec babel-node ./src/JavaScript/pattern/class.js",
     "test": "jest ./test --watchAll --collect[=true] --logHeapUsage"
   },
   "devDependencies": {
