@@ -4,9 +4,21 @@ class User {
         this.name = name
     }
 
+    hasAccess() {
+        return this.name === "Raven"
+    }
+}
+
+
+class NullUser {
+    constructor() {
+        this.id = -1
+        this.name = "Guest"
+    }
+
 
     hasAccess() {
-        return this.name === 'Raven'
+        return false
     }
 }
 
@@ -15,16 +27,17 @@ const users = [
     new User(2, 'Raven')
 ]
 
-const getUser = id => users.find(user => user.id === id);
+const getUser = id => {
+    const user = users.find(user => user.id === id);
+    if (user === null) return new NullUser()
+    else return user
+}
 
 const printUser = id => {
     const user = getUser(id)
+    console.log(`Hello ${user.name}`)
 
-    let name = "Guest"
-    if (user !== null && user.name !== null) name = user.name
-    console.log(`Hello ${name}`)
-
-    if (user !== null && user.hasAccess !== null && user.hasAccess()) {
+    if (user.hasAccess()) {
         console.log("You have access");
     } else {
         console.log("You are not allowed here");
