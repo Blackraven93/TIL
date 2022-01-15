@@ -7,35 +7,13 @@ class Address {
 
 
 class User {
-    constructor(name) {
+    constructor(name, { age, phone = '010-1111-1111', address } = {}) {
         this.name = name
+        this.age = age
+        this.phone = phone
+        this.address = address
     }
 }
 
-class UserBuilder {
-    constructor(name) {
-        this.user = new User(name)
-    }
-
-    setAge(age) {
-        this.user.age = age
-        return this
-    }
-
-    setPhone(phone) {
-        this.user.phone = phone
-        return this
-    }
-
-    setAge(address) {
-        this.user.address = address
-        return this
-    }
-
-    build() {
-        return this.user
-    }
-}
-
-let user = new UserBuilder('Bob').setAge(10).setPhone('010-1111-1111').build()
+let user = new User("Raven", { age: 10, phone: '010-0111-1111', address: new Address("1", "Main") })
 console.log(user)
