@@ -1,5 +1,4 @@
-import FancyLogger from "./singletonPattern.js";
-const logger = new FancyLogger()
+import logger from "./singletonPattern.js";
 
 export default function logFirstImplementation() {
     logger.printLogCount()
@@ -7,4 +6,6 @@ export default function logFirstImplementation() {
     logger.printLogCount()
 }
 
-logFirstImplementation()
+
+
+
