@@ -2,7 +2,7 @@ class FancyLogger {
     constructor() {
         // FancyLogger.instance == null => true
         // FancyLogger.instance ==== null => false ??
-
+        // FancyLogger.instance === undefined로 수정
         if (FancyLogger.instance === undefined) {
             this.logs = []
             FancyLogger.instance = this
