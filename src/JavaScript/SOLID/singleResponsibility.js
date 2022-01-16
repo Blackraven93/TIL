@@ -1,3 +1,5 @@
+import logMessage from "./logMessage.js";
+
 class CalorieTracker {
   constructor(maxCalories) {
     this.maxCalories = maxCalories;
@@ -7,16 +9,13 @@ class CalorieTracker {
   trackCalories(calorieCount) {
     this.currentCalories += calorieCount;
     if (this.currentCalories > this.maxCalories) {
-      this.logCalorieSurplus();
+      return logMessage("Max calories exceeded");
     }
-  }
-
-  logCalorieSurplus() {
-    console.log("Max calories exceeded");
+    return this.currentCalories
   }
 }
 
 const calorieTracker = new CalorieTracker(2000);
-calorieTracker.trackCalories(500);
-calorieTracker.trackCalories(1000);
-calorieTracker.trackCalories(700);
+console.log(calorieTracker.trackCalories(500))
+console.log(calorieTracker.trackCalories(1000))
+console.log(calorieTracker.trackCalories(700));
