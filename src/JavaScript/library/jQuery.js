@@ -5,6 +5,9 @@
  */
 
 // Global undefined variable
+
+console.log("jQuery library access")
+
 window.undefined = window.undefined;
 function jQuery(a,c) {
 
