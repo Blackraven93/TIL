@@ -7,6 +7,7 @@ class Creator {
     }
 }
 
+// 
 class ConcreteCreator1 extends Creator {
     factoryMethod() {
         return new ConcreteProduct1();
