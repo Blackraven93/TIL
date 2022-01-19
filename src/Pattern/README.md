@@ -32,4 +32,6 @@ function Tea() {
   this.tastes = "sweet";
 }
 ```
-3. 
+3. error 핸들링
+
+### 4장 함수
