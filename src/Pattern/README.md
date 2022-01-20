@@ -22,4 +22,16 @@
 
 ### 3장 리터럴과 생성자 요약
 
-1. 생성자 사용을 자제하고 대신 리터럴 표기법을 사용하라.
+1. 객체를 만들 때 생성자 패턴으로 제작하지 말고 객체 리터럴 방식으로 제작할 것
+2. new와 함께 호출된 것처럼 동장하도록 보장하는 코드
+```javascript
+function Tea() {
+  if (!(this instanceof Tea)) {
+    return new Tea();
+  }
+  this.tastes = "sweet";
+}
+```
+3. error 핸들링
+
+### 4장 함수
