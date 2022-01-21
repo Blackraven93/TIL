@@ -84,7 +84,7 @@ let regexp = new RegExp(`<${tag}>`);
 
 - [0-9] : 숫자 범위 === \d
 - [a-zA-Z] : 문자 범위
-- [a-zA-Z0-9_] === \w
+- [a-zA-Z_] === \w
 - [\t\n\v\f\r] === \s
 
 #### 반대(Excluding ranges)
