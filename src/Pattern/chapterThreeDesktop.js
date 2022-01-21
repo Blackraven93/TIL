@@ -1,7 +1,7 @@
 // 생성자 함수 정의
 var Person = function (name) {
     this.name = name;
-    this.say = function() {
+    this.say = function () {
         return `I'm ${this.name}`;
     }
 }
@@ -31,7 +31,7 @@ console.log(raven.say())
 
 // 생성자 함수는 암묵적으로 this를 반환한다 
 // 하지만 따로 정할 수도 있다.
-var Objectmaker = function() {
+var Objectmaker = function () {
     this.name = "This is it";
 
     var that = {}
@@ -54,13 +54,13 @@ function Waffle() {
 function Waffle2() {
     var that;
     return that = {
-        tastes : "yummy"
+        tastes: "yummy"
     }
 }
 
 function Waffle3() {
     return {
-        tastes : "yummy"
+        tastes: "yummy"
     }
 }
 
