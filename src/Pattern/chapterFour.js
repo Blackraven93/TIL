@@ -31,3 +31,6 @@ console.log(bird2.name);
 console.log(bird3.name);
 
 // 책이랑 다르게 전부다 나온다.
+// add2 bird2 즉 익명함수 표현식을 사용할 것!! (호이스팅, 명확한 의미 전달)
+// 함수 선언문 호이스팅 O
+// 함수 표현식 호이스팅 X
