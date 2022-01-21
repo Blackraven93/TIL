@@ -95,5 +95,26 @@ let regexp = new RegExp(`<${tag}>`);
 
 #### 특수문자
 
-- 특수문자는 이스케이프 문자를 사용하지 않는다 (\)
+- 특수문자는 이스케이프 문자를 사용하지 않는다 (\ : 백슬래쉬)
 - [-().^+]
+
+### Quantifiers +, *, ?, {n}
+
+- {n} : 직접 개수를 지정할 수 있음
+- {x,y} : 개수의 범위 설정 가능
+- {n,} : n개 이상
+- \d+ : \d{1,} 숫자 모두
+- \d? : \d{0,1} 한개라도 있다면
+- \d* : \d{0,} 0개 이상
+
+
+### 정규표현식 알고리즘
+
+#### Greedy mode Lazy mode
+1. For every position in the string
+2. Try to match the pattern at that position.
+3. If there’s no match, go to the next position.
+
+
+#### OR |
+
