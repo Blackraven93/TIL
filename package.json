@@ -8,6 +8,7 @@
     "symbol": "nodemon --exec babel-node ./src/JavaScript/es6/symbol-set-map.js",
     "refactoring": "nodemon --exec babel-node ./src/JavaScript/refactoring/Chapter1.js",
     "pattern": "nodemon --exec babel-node ./src/Pattern/chapterThree.js",
+    "iterable": "nodemon --exec babel-node src/Javascript/iterable/iterable.js",
     "test": "jest ./test --watchAll --collect[=true] --logHeapUsage"
   },
   "devDependencies": {
