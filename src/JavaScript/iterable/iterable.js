@@ -21,7 +21,7 @@ console.log("next" in iterator);
 const iterable = [1, 2, 3, 4, 5];
 const iter = iterable[Symbol.iterator]();
 
-for (;;) {
+for (; ;) {
   const res = iter.next();
 
   if (res.done) break;
@@ -83,6 +83,7 @@ console.log(iterFibonacci.next()); // { value: 2, done: false }
 console.log(iterFibonacci.next()); // { value: 3, done: false }
 console.log(iterFibonacci.next()); // { value: 5, done: false }
 console.log(iterFibonacci.next()); // { value: 8, done: false }
+console.log(iterFibonacci.next()); // { value: 13, done: true }
 console.log(iterFibonacci.next()); // { value: 13, done: true }
 
 // 값들의 목록!
