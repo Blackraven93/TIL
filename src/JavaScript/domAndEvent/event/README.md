@@ -50,3 +50,15 @@
 - unload
 - abort
 - error
+
+
+## Capturing & Bubbling
+
+### Bubbling을 통해 전파되지 않는 이벤트
+
+- 포커스 이벤트 : focus/blur
+- 리소스 이벤트 : load/unload/abort/error
+- 마우스 이벤트 : mouseenter/mouseleave
+
+#### 반드시 필요한 경우를 제외하곤 버블링을 막지 말 것!!
+
