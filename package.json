@@ -9,6 +9,7 @@
     "refactoring": "nodemon --exec babel-node ./src/JavaScript/refactoring/Chapter1.js",
     "pattern": "nodemon --exec babel-node ./src/Pattern/chapterThree.js",
     "iterable": "nodemon --exec babel-node src/Javascript/iterable/iterable.js",
+    "fs": "nodemon --exec babel-node src/Javascript/FS/fs/basic.js",
     "tsc":"tsc --watch -t es5",
     "test": "jest ./test --watchAll --collect[=true] --logHeapUsage"
   },
