@@ -87,3 +87,50 @@ const sortBy = (property) => {
 
 birds.sort(sortBy("age"));
 console.log(birds);
+
+const unary = (fn) =>
+  fn.length === 1 ? fn : (arg) => fn(arg)
+
+
+console.log(['1', '2', '3', '4'].map(unary(parseInt)))
+
+const once = (fn) => {
+  let done = false;
+
+  return function () {
+    return done ? undefined : ((done = true), fn.apply(this, arguments))
+  }
+}
+
+const doPayment = once(() => {
+  console.log("Payment is done")
+})
+
+doPayment()
+doPayment()
+doPayment()
+
+const factorial = (n) => {
+  if (n === 0) {
+    return 1
+  }
+  return n * factorial(n - 1);
+}
+
+console.log(factorial(4))
+
+const memoized = (fn) => {
+  const lookupTable = {};
+
+  return (arg) => lookupTable[arg] || (lookupTable[arg] = fn(arg))
+}
+
+let fastFactorial = memoized((n) => {
+  if (n === 0) {
+    return 1;
+  }
+
+  return n * fastFactorial(n - 1)
+})
+
+console.log(fastFactorial(5))
