@@ -134,3 +134,32 @@ let fastFactorial = memoized((n) => {
 })
 
 console.log(fastFactorial(5))
+
+const a = { name: "raven" };
+const b = { age: 2 };
+const c = { gender: 'M' }
+
+function objectAssign(target, source) {
+  const to = {};
+  for (let i = 0; i < arguments.length; i += 1) {
+    const from = arguments[i];
+    const keys = Object.keys(from);
+    for (let j = 0; j < keys.length; j += 1) {
+      to[keys[j]] = from[keys[j]];
+    }
+  }
+  return to;
+}
+
+const customObjectAssign = objectAssign(a, b, c);
+console.log(customObjectAssign)
+
+// 메소드 사용 시 객체 a가 변경됨을 주의 객체 a가 합쳐질 타깃 객체로 간주됨
+const nativeObjectAssign = Object.assign(a, b, c);
+console.log(nativeObjectAssign)
+console.log(a)
+
+// 새롭게 하기 위해선
+const nativeObjectAssignNewTarget = Object.assign({}, a, b, c);
+console.log(nativeObjectAssignNewTarget)
+console.log(a)
