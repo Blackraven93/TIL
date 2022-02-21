@@ -163,3 +163,4 @@ console.log(a)
 const nativeObjectAssignNewTarget = Object.assign({}, a, b, c);
 console.log(nativeObjectAssignNewTarget)
 console.log(a)
+
