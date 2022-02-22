@@ -43,3 +43,45 @@ const concatAll = (array, fn) => {
 
 const testArray2 = [[1, 2], [3, 4], [5, 6]]
 console.log(concatAll(testArray2))
+
+
+const useless = [2, 5, 6, 1, 10]
+
+let result = 0;
+forEach(useless, (value) => {
+  result = result + value
+})
+
+const reduce = (array, fn, initialValue = undefined) => {
+  let accumlator;
+
+  if (initialValue !== undefined) accumlator = initialValue;
+  else accumlator = array[0];
+
+  if (initialValue === undefined) {
+    for (let i = 0; i < array.length; i++) {
+      accumlator = fn(accumlator, array[i])
+    }
+  } else {
+    for (const value of array) {
+      accumlator = fn(accumlator, value)
+    }
+
+    return [accumlator]
+  }
+}
+
+console.log(reduce(useless, (acc, val) => acc * val, 1))
+
+const zip = (leftArr, rightArr, fn) => {
+  let index;
+  let results = [];
+  let minLengthOfTwoArray = Math.min(leftArr.length, rightArr.length)
+
+  for (index = 0; index < minLengthOfTwoArray; index++) {
+    results.push(fn(leftArr[index], rightArr[index]))
+  }
+  return results;
+}
+
+console.log(zip([1, 2, 3], [4, 5, 6], (x, y) => x + y))
