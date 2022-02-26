@@ -106,3 +106,5 @@ delayTenMs(() => console.log("Do it !"))
 let prettyPrintJson = partial(JSON.stringify, undefined, null, 2)
 console.log(prettyPrintJson({ name: "raven", color: "black" }))
 console.log(prettyPrintJson({ name: "raven", color: "black" }))
+
+// curry와 partial를 이용
