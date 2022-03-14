@@ -1,3 +1,5 @@
+import { reduce } from "../util/array.js";
+
 const add = (a = 0, b = 0) => {
   return a + b;
 }
@@ -54,3 +56,10 @@ const str = '공백별 단어 갯수는??'
 console.log(countWords(str))
 
 
+const multipleCompose = (...fns) => (value) => reduce(fns.reverse(), (acc, fn) => fn(acc), value);
+console.log(reduce([1,2,3], (acc, it) => it + acc, 0))
+
+const oddOrEven = (ip) => ip % 2 ? 'odd' : 'even';
+
+const oddOrEvenWords = multipleCompose(oddOrEven, count, splitInfoSpaces);
+console.log(oddOrEvenWords('안녕하세요 만나서 반갑습니다 글자 갯수가 어떻게 될까요?'))

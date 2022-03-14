@@ -52,7 +52,7 @@ forEach(useless, (value) => {
   result = result + value
 })
 
-const reduce = (array, fn, initialValue = undefined) => {
+export const reduce = (array, fn, initialValue = undefined) => {
   let accumlator;
 
   if (initialValue !== undefined) accumlator = initialValue;
