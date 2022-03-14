@@ -22,12 +22,35 @@ const addAndSquare2 = (a, b) => square(add(a, b));
 
 console.log(addAndSquare2(4, 5))
 
-const compose = (func1, func2) => val => func2(func1(val));
+// const compose = (func1, func2) => val => func2(func1(val));
 
-const compute = compose(add, multiply);
+// const compute = compose(add, multiply);
 
-console.log(compute(5))
+// console.log(compute(5))
 
-const compose2 = (...funcs) => (initialVal) => funcs.reduceRight((val, fn) => fn(val), initialVal);
+// const compose2 = (...funcs) => (initialVal) => funcs.reduceRight((val, fn) => fn(val), initialVal);
 
-const pipe = (...funcs) => (initialVal) => funcs.reduce((val, fn) => fn(val), initialVal);
+// const pipe = (...funcs) => (initialVal) => funcs.reduce((val, fn) => fn(val), initialVal);
+
+const compose = (a, b) => (c) => a(b(c))
+// 두 함수 a, b를 받아 하나의 인자c를 갖는 함수를 반환
+
+const double = (num) => num ** 2;
+console.log('compose', compose(square, double)(5))
+
+// let data = parseFloat('3.56')
+// let number = Math.round(data)
+// console.log(number)
+
+let number = compose(Math.round, parseFloat)
+// 넘버가 호출 되기 전에는 실행 되지 않는다.
+console.log(number('3.56'))
+
+const splitInfoSpaces = (str) => str.split(' ');
+const count = array => array.length;
+
+const countWords = compose(count, splitInfoSpaces)
+const str = '공백별 단어 갯수는??'
+console.log(countWords(str))
+
+
