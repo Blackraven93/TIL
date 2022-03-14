@@ -48,8 +48,8 @@ let number = compose(Math.round, parseFloat)
 // 넘버가 호출 되기 전에는 실행 되지 않는다.
 console.log(number('3.56'))
 
-const splitInfoSpaces = (str) => str.split(' ');
-const count = array => array.length;
+export const splitInfoSpaces = (str) => str.split(' ');
+export const count = array => array.length;
 
 const countWords = compose(count, splitInfoSpaces)
 const str = '공백별 단어 갯수는??'
@@ -59,7 +59,18 @@ console.log(countWords(str))
 const multipleCompose = (...fns) => (value) => reduce(fns.reverse(), (acc, fn) => fn(acc), value);
 console.log(reduce([1,2,3], (acc, it) => it + acc, 0))
 
-const oddOrEven = (ip) => ip % 2 ? 'odd' : 'even';
+export const oddOrEven = (ip) => ip % 2 ? 'odd' : 'even';
 
 const oddOrEvenWords = multipleCompose(oddOrEven, count, splitInfoSpaces);
+/**
+ * === compose(compose(oddOrEvent, count), splitInfoSpaces);
+ * === compose(oddOrEvent, compose(count, splitInfoSpaces))
+ */
 console.log(oddOrEvenWords('안녕하세요 만나서 반갑습니다 글자 갯수가 어떻게 될까요?'))
+
+const identity = (it) => {
+  console.log(it);
+  return it
+}
+
+console.log(compose(oddOrEven, count, identity, splitInfoSpaces)("Test string"))

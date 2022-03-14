@@ -10,7 +10,7 @@
     "pattern": "nodemon --exec babel-node ./src/Pattern/chapterThree.js",
     "iterable": "nodemon --exec babel-node src/Javascript/iterable/iterable.js",
     "fs": "nodemon --exec babel-node src/Javascript/FS/fs/basic.js",
-    "tsc":"tsc --watch -t es5",
+    "tsc": "tsc --watch -t es5",
     "test": "jest ./test --watchAll --collect[=true] --logHeapUsage"
   },
   "devDependencies": {
@@ -20,6 +20,7 @@
     "@babel/preset-env": "^7.16.5",
     "@types/node": "^17.0.10",
     "babel-jest": "^27.4.6",
+    "babel-node": "^0.0.1-security",
     "jest": "^27.4.7",
     "nodemon": "^2.0.15",
     "tslint": "^6.1.3",
