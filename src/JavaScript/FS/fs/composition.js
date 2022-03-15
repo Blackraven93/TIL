@@ -72,5 +72,5 @@ const identity = (it) => {
   console.log(it);
   return it
 }
-
+// 오류 확인
 console.log(compose(oddOrEven, count, identity, splitInfoSpaces)("Test string"))
