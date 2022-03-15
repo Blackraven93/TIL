@@ -37,3 +37,33 @@ console.log(
 )
 
 
+const MayBe = function(val) {
+  this.value = val
+}
+
+MayBe.of = function(val) {
+  return new MayBe(val);
+}
+
+MayBe.prototype.isNothing = function() {
+  return (this.value === null || this.value === undefined)
+}
+
+MayBe.prototype.map = function(fn) {
+  return this.isNothing() ? MayBe.of(null) : MayBe.of(fn(this.value));
+};
+
+console.log(MayBe.of('string').map(x => x.toUpperCase()))
+console.log(MayBe.of(null).map(x => x.toUpperCase())) // 선언적으로 null을 다룰 수 있음
+
+/**
+ * 일반적으로
+ * let value = 'string'
+ * if (value !== null || value !== undefined) {
+ *  return value.toUpperCase() 
+ * }
+ */
+
+console.log(MayBe.of('Raven')
+  .map(x => x.toUpperCase())
+  .map(x => "Mr. " + x))
