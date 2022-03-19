@@ -37,7 +37,7 @@ console.log(
 )
 
 
-const MayBe = function(val) {
+export const MayBe = function(val) {
   this.value = val
 }
 

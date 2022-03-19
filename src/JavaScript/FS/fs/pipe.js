@@ -1,7 +1,7 @@
 import { reduce } from "../util/array.js";
 import { splitInfoSpaces, count, oddOrEven } from "./composition.js";
 
-const pipe = (...fns) => value => reduce(fns, (acc, fn) => fn(acc), value)
+export const pipe = (...fns) => value => reduce(fns, (acc, fn) => fn(acc), value)
 
 const oddOrEvenWords = pipe( splitInfoSpaces, count, oddOrEven );
 

@@ -9,7 +9,7 @@ const addCurried = x => y => x + y;
 
 console.log(addCurried(5)(4))
 
-const curry = (binaryFn) => {
+export const curry = (binaryFn) => {
   return function (firstArg) {
     return function (secondArg) {
       return binaryFn(firstArg, secondArg);

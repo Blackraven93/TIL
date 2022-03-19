@@ -1,3 +1,6 @@
+import { pipe } from "./pipe.js";
+import { curry } from "./curring.js";
+import { MayBe } from "./functor.js";
 const Nothing = function(val) {
   this.value = val
 }
@@ -73,6 +76,13 @@ const books = [
   { id: 'book2', title: 'speaking javaScript', author: 'Axel Rauschmayer' },
 ];
 
+const findBookById = curry((id, books) => {
+  return books.find((book) => book.id === id);
+});
+
+const validateBookAuthor = (book) => {
+  return book.author.indexOf('Axel') > -1 ? MayBe.of(book) : MayBe.of(null);
+}
 
 const logByEitherStatus = (eitherBook) => {
   return eitherBook.isLeft 
