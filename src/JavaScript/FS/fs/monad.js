@@ -95,3 +95,87 @@ joinExample.chain(v => v + 8)
 // of와 map만 갖는 MayBe는 함수자다.
 // chain을 갖는 함수자는 모나드다.
 
+// f⋄g(x) = f(g(x))
+const abs = x => Math.abs(x);
+abs(Math.PI * 1/2); // 1
+
+const cube = x => (x ** 3);
+cube(3); // 27
+
+const cubeThenAbs = x => cube(abs(x))
+console.log(cubeThenAbs(2))
+
+const compose = (f, g) => x => f(g(x))
+/**
+ * const compose = function(f, g) {
+ *  return function(x) {
+ *    return f(g(x))
+ *  }
+ * }
+ */
+
+
+const absCube = compose(abs, cube)
+console.log(absCube(2))
+
+const sine = x => [Math.sin(x), 'sine was called'];
+const squared = x => [x ** 2, 'squared was called'];
+
+console.log(sine(2))
+console.log(squared(2))
+console.log(compose(sine, squared)(2))
+
+/**
+ * 1. sine은 Math.sin을 계산하려고 하지만, 입력받은 인자가 숫자가 아니기 때문에 NaN을 반환하게 된다.
+ * 2. squared 반환값의 2번째 원소인 squared was called.가 사라진다.
+ */
+
+const composeM = (f, g) => (a, b) => {
+  const [y, s] = g(a, b);
+  const [z, t] = f(y, s);
+
+  return [z, s + ' & ' + t];
+};
+
+console.log(composeM(sine, squared)(3));
+
+
+// bind
+const bind = f => (...tuple) => {
+  console.log('tuple', tuple);
+  const [x, s] = tuple; // 첫번째 [3, in], 두번째 [9, squared...]
+  const [y, t] = f(x); // 첫번째 [9 , 'squared ... ' ] 두번째 [Math.sin(9),] 
+
+  return [y, t]; // [9 , 'squared ... ' ]
+};
+
+console.log(composeM(bind(sine), bind(squared))(3, ''))
+
+const unit = x => {
+  return x
+};
+
+console.log(composeM(bind(sine), bind(squared))(unit(3)));
+
+class Monad {
+  static of(value) {
+    return new Monad(value);
+  }
+  constructor(value) {
+    this.value = value
+  }
+  map(fn) {
+    return Monad.of(fn(this.value))
+  }
+  join() {
+    return this.value
+  }
+  chain(fn) {
+    return fn(this.join())
+  }
+}
+
+// examples
+console.log(Monad.of(3).map(x => x+3).chain(x => Monad.of(x*2)).join()) // 12
+
+
