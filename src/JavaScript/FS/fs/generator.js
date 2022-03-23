@@ -84,3 +84,56 @@ console.log(sequence2.next().done)
 for (const value of generatorSequence()) {
   console.log(value)
 }
+
+function* sayFullName() {
+  const firstName = yield;
+  const secondName = yield;
+  console.log(firstName + ' ' + secondName)
+}
+
+let fullName = sayFullName()
+console.log(fullName.next())
+console.log(fullName.next('Raven'))
+console.log(fullName.next('Black'))
+
+console.log('비동기 시작')
+
+let getDateOne = (cb) => {
+  setTimeout(() => {
+    cb('dummy data one')
+  }, 1000);
+}
+
+let getDateTwo = (cb) => {
+  setTimeout(() => {
+    cb('dummy data two')
+  }, 1000);
+}
+
+getDateOne((data) => console.log('data received', data))
+getDateTwo((data) => console.log('data received', data))
+
+let generator;
+let getDataThree = () => {
+  setTimeout(() => {
+    generator.next('dummy data three')
+  }, 1000)
+}
+
+let getDataFour = () => {
+  setTimeout(() => {
+    generator.next('dummy data four')
+  }, 1000)
+}
+
+function* main() {
+  let dataOne = yield getDataThree();
+  let dataTwo = yield getDataFour();
+  console.log('data one', dataOne)
+  console.log('data two', dataTwo)
+}
+
+generator = main();
+generator.next()
+
+console.log('비동기 끝')
