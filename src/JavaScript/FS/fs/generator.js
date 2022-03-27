@@ -137,3 +137,23 @@ generator = main();
 generator.next()
 
 console.log('비동기 끝')
+
+// git push 오류
+
+import https from "https";
+
+function httpGetAsync(url, callback) {
+  return https.get(url,
+    function(response) {
+      let body = '';
+      response.on('data', (d) => {
+        body += d;
+      });
+
+      response.on('end',() => {
+        let parsed = JSON.parse(body)
+        callback(parsed)
+      })
+    })
+}
+
