@@ -157,3 +157,26 @@ function httpGetAsync(url, callback) {
     })
 }
 
+/* callback
+httpGetAsync('https://www.reddit.com/r/pics/.json', picJson => {
+  console.log(picJson.data.children[0].data.url)
+  httpGetAsync(picJson.data.children[0].data.url, firstPicRedditData => {
+    console.log(firstPicRedditData)
+  })
+})
+*/
+
+// function requestUseGenrator(url) {
+//   httpGetAsync(url, function(response) {
+//     generator.next( response );
+//   })
+// }
+
+// function *main2() {
+//   let picturesJson = yield requestUseGenrator('https://www.reddit.com/r/pics/.json');
+//   let firstPictureData = yield requestUseGenrator(picturesJson.data + '.json')
+//   console.log(firstPictureData)
+// }
+
+// generator = main2()
+// generator.next()
