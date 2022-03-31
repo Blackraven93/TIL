@@ -51,17 +51,17 @@ class Student extends Person {
   }
 }
 
-const peopleInSameCountry = (friends) => {
+const peopleInSameAddress = (friends) => {
   const result = [];
   for (const idx in friends) {
     const friend = friends[idx];
-    if (this.address.country === friend.address.country) result.push(friend);
+    if (this.address === friend.address) result.push(friend);
   }
   return result;
 }
 
 const studentsInSameCountyAndSchool = (friends) => {
-  const closeFriends = super.peopleInSameCountry(friends);
+  const closeFriends = peopleInSameAddress(friends);
   const result = [];
   for (const idx in closeFriends) {
       const friend = closeFriends[idx];
@@ -71,3 +71,22 @@ const studentsInSameCountyAndSchool = (friends) => {
     }
   return result
 }
+
+
+const curry = new Student('haskell', 'Curry', '111-111-111', 'Penn state');
+curry.address = 'US'
+
+const turing = new Student('Alan', 'Turing', '222-222-222', 'Princeton');
+turing.address = 'US'
+
+const church = new Student('Alonzo', "Church", '333-333-333', 'Princeton');
+church.address = 'US'
+
+// fp
+const selector = (country, school) => student => {
+  return student.address === country && student.school === school
+} // 학생의 국가와 학교를 비교하는 함수
+
+const findStudentsBy = (friends, selector) => friends.filter(selector);
+
+console.log(findStudentsBy([curry, turing, church], selector('US', 'Princeton')))
