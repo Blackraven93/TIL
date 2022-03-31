@@ -39,6 +39,16 @@ _주어진 함수에 허용되는 모든 입력값을 함수의 모데인이라�
 
 - 정의역, 공역, 치역 공부해보기!
 
+### 함수형 대 객체지향 프로그래밍
+
+```javascript
+const person = new Student("Alonzo", "Church", "111-1111-1111", "raven");
+person.fullname;
+
+const fullname = (person) => [person.firstname, person.lastname].join("");
+fullname(person);
+```
+
 ### curring
 
 - N개 인자의 함수를 중첩된 단항 함수로 변화시키는 과정이다.
