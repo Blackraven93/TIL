@@ -1,3 +1,5 @@
+// 함수화 하기
+
 const obj = {
   customer : 'raven'
 }
