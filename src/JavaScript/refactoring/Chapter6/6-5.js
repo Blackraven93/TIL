@@ -35,4 +35,59 @@ const circumference = (radius) => 2 * Math.PI * radius;
 
 // 마이그레이션
 const circumferenceM = (radius) => 2 * Math.PI * radius;
+// circumM 폐기 예정임을 표시 (로직이 매끄럽게 이뤄지면 삭제)
 const circumM = (radius) => circumferenceM(radius);
+
+// 마이그레이션
+/*
+zz_addReservation = (customer, isPriority) => {
+  this._reservations.push(customer)
+}
+
+addReservation = (customer) => {
+  this.zz_addReservation(customer, false);
+}
+
+어설션을 이용해 확인하기
+zz_addReservation(customer, isPriority) {
+  => assert(isPriority === true || isPriority === false);
+  this._reservation.push(customer)
+}
+
+이 다음 기존 함수를 인라인 하기 ex) this.zz_addReservation(customer, false)
+*/
+
+const isNewEngland = (aCustomer) => {
+  return ['MA', 'CT', 'ME', 'VT', 'NH', 'RI'].includes(aCustomer.address.state);
+};
+
+const newEnglanders = someCustomers.filter(isNewEngland);
+
+/*
+const isNewEnglandRefactor = (aCustomer) => {
+  const stateCode = aCustomer.address.state;
+  return ['MA', 'CT', 'ME', 'VT', 'NH', 'RI'].includes(stateCode)
+}
+
+const isNewEnglandRefactor = (aCustomer) => {
+  const stateCode = aCustomer.address.state
+  return xxNewInNewEngland(stateCode);
+}
+const xxNewInNewEngland = (stateCode) => {
+  return ['MA', 'CT', 'ME', 'VT', 'NH', 'RI'].includes(stateCode)
+}
+
+// 인라인
+
+const isNewEnglandRefactor = (aCustomer) => {
+  return xxNewInNewEngland(aCustomer.address.state);
+}
+
+// 호출문
+const newEnglanders = someCustomers.filter(xxNewInNewEngland)
+
+// 기존 함수 이름으로 변경
+const newEnglanders = someCustomers.filter(c => inNewEngland(c.address.state))
+const inNewEngland = (stateCode) => 
+  return ['MA', 'CT', 'ME', 'VT', 'NH', 'RI'].includes(stateCode)
+*/
