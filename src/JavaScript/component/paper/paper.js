@@ -57,7 +57,7 @@ const paper = {
   },
 };
 
-makePublisher(paper);
+makePublisher(paper); // 여기서 상위에 paper를 등록해줌
 
 const joe = {
   drinkCoffee(paper) {
@@ -68,6 +68,19 @@ const joe = {
   },
 };
 
+console.log(publisher);
+console.log(paper);
+/**
+ * {
+  daily: [Function: daily],
+  monthly: [Function: monthly],
+  subscribe: [Function: subscribe],
+  unsubscribe: [Function: unsubscribe],
+  publish: [Function: publish],
+  visitSubscribers: [Function: visitSubscribers],
+  subscribers: { any: [] }
+}
+ */
 paper.subscribe(joe.drinkCoffee);
 paper.subscribe(joe.sundayPreMap, 'monthly');
 
@@ -88,3 +101,21 @@ paper.readTweets = function (tweet) {
 joe.subscribe(paper.readTweets);
 
 joe.tweet('hated the paper today');
+
+console.log(publisher);
+console.log(paper);
+/**
+ * {
+  daily: [Function: daily],
+  monthly: [Function: monthly],
+  subscribe: [Function: subscribe],
+  unsubscribe: [Function: unsubscribe],
+  publish: [Function: publish],
+  visitSubscribers: [Function: visitSubscribers],
+  subscribers: {
+    any: [ [Function: drinkCoffee] ],
+    monthly: [ [Function: sundayPreMap] ]
+  },
+  readTweets: [Function (anonymous)]
+}
+ */
