@@ -42,3 +42,7 @@ function run() {
 }
 
 // observer pattern의 주요 목적은 결합도를 낮추는 것
+
+// 신문사 + 구독자 = 옵저버 패턴
+// 신문사 : 주제(subject)
+// 구독자 : 구독자(observer)
