@@ -48,7 +48,9 @@ const makePublisher = (paper) => {
 };
 
 const paper = {
+  readCount: 0,
   daily() {
+    this.readCount += 1;
     this.publish('big news today');
   },
 
@@ -57,7 +59,14 @@ const paper = {
   },
 };
 
+const paper2 = {
+  weekly() {
+    this.publish('drink Coffee', 'weekly', 'speacial');
+  },
+};
+
 makePublisher(paper); // 여기서 상위에 paper를 등록해줌
+makePublisher(paper2);
 
 const joe = {
   drinkCoffee(paper) {
@@ -69,7 +78,7 @@ const joe = {
 };
 
 console.log(publisher);
-console.log(paper);
+console.log(paper.readCount);
 /**
  * {
   daily: [Function: daily],
@@ -83,11 +92,15 @@ console.log(paper);
  */
 paper.subscribe(joe.drinkCoffee);
 paper.subscribe(joe.sundayPreMap, 'monthly');
+paper2.subscribe(joe.drinkCoffee, 'weekly');
 
 paper.daily();
 paper.daily();
 paper.daily();
 paper.monthly();
+paper2.weekly();
+paper2.weekly();
+paper2.weekly();
 
 makePublisher(joe);
 joe.tweet = function (msg) {
@@ -104,6 +117,7 @@ joe.tweet('hated the paper today');
 
 console.log(publisher);
 console.log(paper);
+console.log(paper2);
 /**
  * {
   daily: [Function: daily],
