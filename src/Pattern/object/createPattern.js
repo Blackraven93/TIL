@@ -76,6 +76,9 @@ function Gadget() {
   this.stretch = function () {
     return 'iPad';
   };
+  this.getName = function () {
+    return this.name;
+  };
 }
 
 const toy = new Gadget();
@@ -117,3 +120,63 @@ function Gadget4() {
     return specs;
   };
 }
+
+// 객체 리터럴에서 프라이빗 변수를 사용하는 방법
+
+const myObject = (function () {
+  const name = 'Raven';
+
+  return {
+    getName: function () {
+      return name;
+    },
+  };
+})();
+
+console.log(myObject.getName());
+
+Gadget.prototype = (function () {
+  const browser = 'Mobile Webkit';
+  return {
+    getBrowser: function () {
+      return browser;
+    },
+  };
+})();
+
+const toy4 = new Gadget();
+
+console.log(toy4.getName());
+console.log(toy4.getBrowser());
+
+// 비공개 함수를 공개 메서드로 노출시키는 방법(노출 패턴)
+Object.freeze(myObject);
+
+const myArray = (function () {
+  const astr = '[object Array]',
+    toString = Object.prototype.toString;
+
+  function isArray(a) {
+    return toString.call(a) === astr;
+  }
+
+  function indexOf(haystack, needle) {
+    return haystack.find((e, i) => {
+      if (e === needle) {
+        return i;
+      }
+    });
+  }
+
+  return {
+    isArray,
+    indexOf,
+    inArray: indexOf,
+  };
+})();
+
+console.log(myArray.isArray([1, 2, 3, 4]));
+console.log(myArray.isArray({ 0: 1 }));
+console.log(myArray.indexOf(['a', 'b', 'z'], 'z'));
+myArray.indexOf = null;
+console.log(myArray.inArray(['a', 'b', 'c'], 'c'));
