@@ -1,3 +1,5 @@
+import Component from './component.js';
+
 let currentStateKey = 0; // useState가 실행 된 횟수
 
 const states = []; // state를 보관할 배열
@@ -10,7 +12,11 @@ function useState(initState) {
   // state 할당
   const state = states[key];
   const setState = (newState) => {
-    // state를 직접 수정하는 것이 아닌, states 내부의 값을 수정
+    // 동일 값 개선
+    if (newState === state) return;
+
+    if (JSON.stringify(newState) === JSON.stringify(state)) return;
+    //
     states[key] = newState;
     render();
   };
@@ -56,5 +62,7 @@ const render = () => {
   // 그래서 다시 0부터 접근할 수 있도록 값을 초기화 해야 한다.
   currentStateKey = 0;
 };
+
+console.log(Component);
 
 render();
