@@ -27,27 +27,56 @@ const users = [
 
 const coupons = [
   {
-    coupon: 'MAYDISCOUNT',
+    code: 'MAYDISCOUNT',
     rank: 'good',
   },
   {
-    coupon: '10PERCENT',
+    code: '10PERCENT',
     rank: 'bad',
   },
   {
-    coupon: 'PROMOTION45',
+    code: 'PROMOTION45',
     rank: 'best',
   },
   {
-    coupon: 'IHEARTYOU',
+    code: 'IHEARTYOU',
     rank: 'bad',
   },
   {
-    coupon: 'GETADEAL',
+    code: 'GETADEAL',
     rank: 'best',
   },
   {
-    coupon: 'ILIKEDISCOUNTS',
+    code: 'ILIKEDISCOUNTS',
     rank: 'good',
   },
 ];
+
+const subScriber = users.filter((user) => user['email'] === 'sam@pmail.co')[0];
+
+const best = 'best';
+const good = 'good';
+const bad = 'bad';
+
+const subCouponRank = (subScriber) => {
+  return subScriber['rec_count'] >= 10 ? 'best' : 'good';
+};
+
+console.log(subCouponRank(subScriber));
+
+const newCoupon = coupons[1];
+
+const selectCouponsByRank = (coupons, rank) => {
+  return Array.from(coupons)
+    .filter((coupon) => coupon.rank === rank)
+    .map((coupon) => coupon.code);
+};
+
+console.log(selectCouponsByRank(coupons, bad));
+
+const message = {
+  from: 'newsletter@coupon.co',
+  to: 'sam@pmail.com',
+  subject: 'Your weekly coupons inside',
+  body: 'Here are your coupons ...',
+};
