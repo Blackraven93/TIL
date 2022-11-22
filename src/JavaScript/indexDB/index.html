@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="module">
+      if (
+        Notification.permission === "denied" ||
+        Notification.permission === "default"
+      ) {
+        const DBOpenRequest = window.indexedDB.open("studio", 1);
+
+        DBOpenRequest.onerror = (event) => {
+          alert(JSON.parse(JSON.stringify(event)));
+        };
+
+        DBOpenRequest.onsuccess = (event) => {
+          if (event.isTrusted) {
+          }
+        };
+
+        DBOpenRequest.onupgradeneeded = (event) => {
+          const db = event.target.result;
+          try {
+            const objectStore = db.createObjectStore("studio", {
+              keyPath: "name",
+            });
+            objectStore.createIndex("name", "bunt", { unique: true });
+            objectStore.createIndex("email", "bunt.studio@gmail.com", {
+              unique: true,
+            });
+            objectStore.createIndex("ID", "BuntStudioSample", { unique: true });
+            objectStore.createIndex(
+              "bankAccount",
+              "신한은행 110-394-175758 장성훈"
+            );
+            objectStore.createIndex("location");
+
+            DBOpenRequest.onsuccess = (event) => (db = DBOpenRequest.result);
+
+            const transaction = db.transaction("studio", "readwrite");
+
+            transaction.oncomplete = (event) => {
+              console.log("success");
+            };
+
+            transaction.onerror = (event) => {
+              console.log("fail");
+            };
+
+            const objStore = transaction.objectStore("studio");
+            console.log(objstore);
+          } catch (error) {
+            db.onerror = (event) => console.error("error");
+          }
+        };
+      }
+
+      const DBOpenRequest = window.indexedDB.open("studio", 1);
+      DBOpenRequest.onupgradeneeded = (event) => {
+        const db = event.taregt.result;
+        console.log(db.transaction("studio"));
+      };
+    </script>
+  </body>
+</html>
